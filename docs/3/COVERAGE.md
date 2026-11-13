@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-0663df382e0473de. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-6ab50845114c14de. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-2596 catalog episodes/items; 2502 eligible for the station by existing metadata rules. A schedulable source is not a guarantee of future playback.
+2755 catalog episodes/items; 2661 eligible for the station by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Metadata-ready | Source links |
 | --- | ---: | ---: | ---: |
@@ -27,6 +27,11 @@ Revision: expanded-0663df382e0473de. Sources: public Archive metadata and offici
 | Battlestar Galactica | 21 | 21 | 21 |
 | V | 18 | 18 | 18 |
 | The Incredible Hulk | 12 | 12 | 12 |
+| Wizards and Warriors (1983) | 8 | 8 | 8 |
+| The Powers of Matthew Star | 22 | 22 | 22 |
+| Misfits of Science (1985) | 16 | 16 | 16 |
+| Otherworld (1985) | 8 | 8 | 8 |
+| Whiz Kids | 18 | 18 | 18 |
 | He-Man and the Masters of the Universe | 130 | 130 | 418 |
 | G.I. Joe: A Real American Hero | 104 | 95 | 116 |
 | The Transformers | 100 | 16 | 111 |
@@ -65,6 +70,12 @@ Revision: expanded-0663df382e0473de. Sources: public Archive metadata and offici
 | The Flintstones | 26 | 26 | 26 |
 | The Jetsons | 24 | 24 | 24 |
 | Wacky Races (1968) | 17 | 17 | 17 |
+| Butch Cassidy and the Sundance Kids | 13 | 13 | 13 |
+| Clue Club | 16 | 16 | 16 |
+| Goober and the Ghost Chasers | 15 | 15 | 15 |
+| Wheelie and the Chopper Bunch | 13 | 13 | 13 |
+| The Funky Phantom | 17 | 17 | 17 |
+| Inch High, Private Eye | 13 | 13 | 13 |
 | Saturday Morning Simulator | 1 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
