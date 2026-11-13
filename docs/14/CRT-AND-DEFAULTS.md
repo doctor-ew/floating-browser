@@ -19,3 +19,7 @@ All 59 tests pass, including saved-Off preservation, new-catalog default On, app
 ## Attribution
 
 This CSS and scheduling implementation is independently written. Credits for the retro-TV inspiration remain linked on-screen and in ATTRIBUTION.md: Joey Cato / MyRetroTVs and Nikolay1243 / retro-tv-webos. No upstream television artwork is included.
+
+## Follow-up
+
+Issue 15 supersedes the earlier default-only behavior with a one-time startup migration that enables commercials for older saved Off defaults. Subsequent explicit choices remain preserved. It also adds full television cabinet designs and configurable static controls.
