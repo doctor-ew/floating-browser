@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-323e929cf602667a. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-0a3712cd69673706. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-1889 catalog episodes/items; 1795 eligible for the station by existing metadata rules. A schedulable source is not a guarantee of future playback.
+1926 catalog episodes/items; 1832 eligible for the station by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Metadata-ready | Source links |
 | --- | ---: | ---: | ---: |
@@ -39,6 +39,8 @@ Revision: expanded-323e929cf602667a. Sources: public Archive metadata and offici
 | The Centurions | 65 | 65 | 65 |
 | Thundarr the Barbarian | 21 | 21 | 21 |
 | Inspector Gadget | 86 | 86 | 86 |
+| Spider-Man and His Amazing Friends | 24 | 24 | 24 |
+| The Incredible Hulk (1982 animated) | 13 | 13 | 13 |
 | Saturday Morning Simulator | 1 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
