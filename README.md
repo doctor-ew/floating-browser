@@ -8,6 +8,10 @@ This fork is based on [Floating Browser by Chris Hansen](https://github.com/chri
 
 This fork adds browser tabs, adjustable window transparency, and a Pluto TV Home shortcut. It is maintained independently of the original project.
 
+## Drew TV companion
+
+The separate [Drew TV web app](nostalgia-tv/README.md) provides a personal nostalgia channel guide, a curated retro show catalog, Internet Archive playback, the official YouTube player, and outbound Tubi episode links. It runs locally and does not change the native browser. From the repository root, run `cd nostalgia-tv` followed by `npm start`.
+
 ![Floating Browser Home screen](Screenshots/FloatingBrowser-Home.png)
 
 ## Install
