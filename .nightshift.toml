@@ -3,7 +3,7 @@
 profile = "standard"
 
 [ticket_source]
-provider = "spec"
+provider = "gh"
 
 [providers]
 routing_file = "routing.json"
