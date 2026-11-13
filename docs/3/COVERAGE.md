@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-e68c9a1296454c69. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-0663df382e0473de. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-2194 catalog episodes/items; 2100 eligible for the station by existing metadata rules. A schedulable source is not a guarantee of future playback.
+2596 catalog episodes/items; 2502 eligible for the station by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Metadata-ready | Source links |
 | --- | ---: | ---: | ---: |
@@ -49,6 +49,22 @@ Revision: expanded-e68c9a1296454c69. Sources: public Archive metadata and offici
 | Defenders of the Earth | 65 | 65 | 65 |
 | Drak Pack | 16 | 16 | 16 |
 | Dragon’s Lair | 13 | 13 | 13 |
+| The Adventures of the Galaxy Rangers | 65 | 65 | 65 |
+| Visionaries: Knights of the Magical Light | 13 | 13 | 13 |
+| Space Ghost and Dino Boy | 20 | 20 | 20 |
+| The Herculoids | 18 | 18 | 18 |
+| Galtar and the Golden Lance | 21 | 21 | 21 |
+| Speed Buggy | 16 | 16 | 16 |
+| Captain Caveman and the Teen Angels | 16 | 16 | 16 |
+| Hong Kong Phooey | 16 | 16 | 16 |
+| Dynomutt, Dog Wonder | 20 | 20 | 20 |
+| Yogi Bear (original shorts) | 68 | 68 | 68 |
+| Birdman and the Galaxy Trio | 20 | 20 | 20 |
+| Jonny Quest (1964) | 26 | 26 | 26 |
+| Super Friends (1973) | 16 | 16 | 16 |
+| The Flintstones | 26 | 26 | 26 |
+| The Jetsons | 24 | 24 | 24 |
+| Wacky Races (1968) | 17 | 17 | 17 |
 | Saturday Morning Simulator | 1 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
