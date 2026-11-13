@@ -7,6 +7,7 @@ private enum DefaultsKey {
     static let windowFrame = "windowFrame"
     static let customSites = "customSites"
     static let blockAds = "blockAds"
+    static let transparency = "transparency"
     static let migratedLegacyPreferences = "migratedLegacyPreferencesV1"
 }
 
@@ -93,7 +94,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         let showBrowserItem = NSMenuItem(title: "Show Browser", action: #selector(showWindowFromMenu), keyEquivalent: "n")
         showBrowserItem.target = self
         fileMenu.addItem(showBrowserItem)
-        fileMenu.addItem(NSMenuItem(title: "Close Window", action: #selector(NSWindow.performClose(_:)), keyEquivalent: "w"))
+        let newTabItem = NSMenuItem(title: "New Tab", action: #selector(newTabFromMenu), keyEquivalent: "t")
+        newTabItem.target = self
+        fileMenu.addItem(newTabItem)
+        let closeTabItem = NSMenuItem(title: "Close Tab", action: #selector(closeTabFromMenu), keyEquivalent: "w")
+        closeTabItem.target = self
+        fileMenu.addItem(closeTabItem)
         fileMenu.addItem(.separator())
         let homeItem = NSMenuItem(title: "Home", action: #selector(showHomeFromMenu), keyEquivalent: "h")
         homeItem.keyEquivalentModifierMask = [.command, .shift]
@@ -161,6 +167,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.mainMenu = mainMenu
     }
 
+    @MainActor @objc private func newTabFromMenu() {
+        openBrowserWindow()
+        windowController?.newTab()
+    }
+
+    @MainActor @objc private func closeTabFromMenu() {
+        windowController?.closeCurrentTab()
+    }
+
     @MainActor @objc private func showWindowFromMenu() {
         openBrowserWindow()
     }
@@ -201,6 +216,20 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 }
 
+@MainActor
+private final class BrowserTab {
+    let webView: WKWebView
+    var isShowingStartPage = false
+    var contentBlockingActive: Bool?
+    var contentBlockingGeneration = 0
+    var navigationGeneration = 0
+    var recentWebContentRestarts: [Date] = []
+
+    init(webView: WKWebView) {
+        self.webView = webView
+    }
+}
+
 final class BrowserWindowController: NSWindowController, WKNavigationDelegate, WKUIDelegate, WKDownloadDelegate {
     private let addressField = NSSearchField()
     private let statusLabel = NSTextField(labelWithString: "")
@@ -216,7 +245,14 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
     private let homeButton = NSButton(title: "Home", target: nil, action: nil)
     private let miniModeButton = NSButton(title: "Mini", target: nil, action: nil)
     private let moreButton = NSButton(title: "", target: nil, action: nil)
-    private let webView: WKWebView
+    private var tabs: [BrowserTab]
+    private var selectedTabIndex = 0
+    private var selectedTab: BrowserTab { tabs[selectedTabIndex] }
+    private var webView: WKWebView { selectedTab.webView }
+    private let pageContainer = NSView()
+    private let tabBar = NSStackView()
+    private let tabButtons = NSStackView()
+    private let transparencyLabel = NSTextField(labelWithString: "")
     private let defaultSites: [Site] = [
         Site(title: "Netflix", url: "https://www.netflix.com"),
         Site(title: "YouTube", url: "https://www.youtube.com"),
@@ -227,20 +263,28 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
         Site(title: "Apple TV+", url: "https://tv.apple.com"),
         Site(title: "Peacock", url: "https://www.peacocktv.com"),
         Site(title: "Paramount+", url: "https://www.paramountplus.com"),
-        Site(title: "Tubi", url: "https://tubitv.com")
+        Site(title: "Tubi", url: "https://tubitv.com"),
+        Site(title: "Pluto TV", url: "https://pluto.tv/us/watch/live-tv/")
     ]
     private var customSites: [Site] = []
     private var isMiniMode = false
     private var normalWindowFrame: NSRect?
     private var preMiniAlwaysOnTop: Bool?
-    private var contentBlockingActive: Bool?
     private var compiledContentRuleList: WKContentRuleList?
-    private var contentBlockingGeneration = 0
-    private var navigationGeneration = 0
+    private var navigationGeneration: Int {
+        get { selectedTab.navigationGeneration }
+        set { selectedTab.navigationGeneration = newValue }
+    }
     private var warnedPlaybackServices = Set<String>()
-    private var recentWebContentRestarts: [Date] = []
+    private var recentWebContentRestarts: [Date] {
+        get { selectedTab.recentWebContentRestarts }
+        set { selectedTab.recentWebContentRestarts = newValue }
+    }
     private var isShowingProcessRecoveryAlert = false
-    private var isShowingStartPage = false
+    private var isShowingStartPage: Bool {
+        get { selectedTab.isShowingStartPage }
+        set { selectedTab.isShowingStartPage = newValue }
+    }
     private var chromeContainer: NSView?
     private var webViewMinimumHeightConstraint: NSLayoutConstraint?
     private var statusDismissWorkItem: DispatchWorkItem?
@@ -253,18 +297,7 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
     init() {
         Self.migrateLegacyPreferencesIfNeeded()
 
-        let configuration = WKWebViewConfiguration()
-        configuration.websiteDataStore = .default()
-        configuration.allowsAirPlayForMediaPlayback = true
-        configuration.mediaTypesRequiringUserActionForPlayback = []
-        configuration.preferences.javaScriptCanOpenWindowsAutomatically = false
-        configuration.userContentController = WKUserContentController()
-
-        webView = WKWebView(frame: .zero, configuration: configuration)
-        // Prime Video's web player rejects WKWebView's default browser identity.
-        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15"
-        webView.allowsBackForwardNavigationGestures = true
-        webView.allowsMagnification = true
+        tabs = [BrowserTab(webView: Self.makeWebView())]
 
         let frame = BrowserWindowController.restoredWindowFrame() ?? BrowserWindowController.defaultWindowFrame()
         let window = NSWindow(
@@ -286,6 +319,8 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
 
         super.init(window: window)
 
+        applyTransparency(UserDefaults.standard.double(forKey: DefaultsKey.transparency))
+
         window.delegate = self
         webView.navigationDelegate = self
         webView.uiDelegate = self
@@ -296,6 +331,23 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
             self?.loadInitialPage()
             self?.updateNavigationState()
         }
+    }
+
+    private static func makeWebView() -> WKWebView {
+        let configuration = WKWebViewConfiguration()
+        configuration.websiteDataStore = .default()
+        configuration.allowsAirPlayForMediaPlayback = true
+        configuration.mediaTypesRequiringUserActionForPlayback = []
+        configuration.preferences.javaScriptCanOpenWindowsAutomatically = false
+        configuration.userContentController = WKUserContentController()
+
+        let webView = WKWebView(frame: .zero, configuration: configuration)
+        // Prime Video's web player rejects WKWebView's default browser identity.
+        webView.customUserAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Safari/605.1.15"
+        webView.allowsBackForwardNavigationGestures = true
+        webView.allowsMagnification = true
+
+        return webView
     }
 
     private static func migrateLegacyPreferencesIfNeeded() {
@@ -474,16 +526,41 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
 
         let chromeContainer = makeChromeContainer(containing: toolbarStack)
         self.chromeContainer = chromeContainer
-        webView.translatesAutoresizingMaskIntoConstraints = false
+        pageContainer.translatesAutoresizingMaskIntoConstraints = false
+        tabBar.orientation = .horizontal
+        tabBar.spacing = 8
+        tabBar.edgeInsets = NSEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+        tabBar.translatesAutoresizingMaskIntoConstraints = false
+        tabButtons.orientation = .horizontal
+        tabButtons.spacing = 4
+        tabButtons.translatesAutoresizingMaskIntoConstraints = false
+        let tabScroll = NSScrollView()
+        tabScroll.translatesAutoresizingMaskIntoConstraints = false
+        tabScroll.documentView = tabButtons
+        tabScroll.hasHorizontalScroller = true
+        tabScroll.drawsBackground = false
+        let addTabButton = NSButton(title: "+", target: self, action: #selector(newTab))
+        addTabButton.setAccessibilityLabel("New Tab")
+        addTabButton.toolTip = "New Tab (⌘T)"
+        tabBar.addArrangedSubview(tabScroll)
+        tabBar.addArrangedSubview(addTabButton)
+        NSLayoutConstraint.activate([
+            tabButtons.heightAnchor.constraint(equalTo: tabScroll.contentView.heightAnchor),
+            tabBar.heightAnchor.constraint(equalToConstant: 42),
+            addTabButton.widthAnchor.constraint(equalToConstant: 32)
+        ])
         rootStack.addArrangedSubview(chromeContainer)
-        rootStack.addArrangedSubview(webView)
+        rootStack.addArrangedSubview(tabBar)
+        rootStack.addArrangedSubview(pageContainer)
+        installPage(webView)
+        rebuildTabBar()
 
         contentView.addSubview(rootStack)
         contentView.addSubview(miniOverlayButton)
         contentView.addSubview(miniCloseButton)
         contentView.addSubview(statusToast)
 
-        let webViewMinimumHeightConstraint = webView.heightAnchor.constraint(greaterThanOrEqualToConstant: 300)
+        let webViewMinimumHeightConstraint = pageContainer.heightAnchor.constraint(greaterThanOrEqualToConstant: 300)
         self.webViewMinimumHeightConstraint = webViewMinimumHeightConstraint
 
         NSLayoutConstraint.activate([
@@ -492,6 +569,8 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
             rootStack.topAnchor.constraint(equalTo: contentView.topAnchor),
             rootStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             chromeContainer.widthAnchor.constraint(equalTo: rootStack.widthAnchor),
+            tabBar.widthAnchor.constraint(equalTo: rootStack.widthAnchor),
+            pageContainer.widthAnchor.constraint(equalTo: rootStack.widthAnchor),
             miniOverlayButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             miniOverlayButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             miniCloseButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -509,6 +588,98 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
             addressField.widthAnchor.constraint(greaterThanOrEqualToConstant: 200),
             webViewMinimumHeightConstraint
         ])
+    }
+
+    private func installPage(_ page: WKWebView) {
+        page.translatesAutoresizingMaskIntoConstraints = false
+        pageContainer.addSubview(page)
+        NSLayoutConstraint.activate([
+            page.leadingAnchor.constraint(equalTo: pageContainer.leadingAnchor),
+            page.trailingAnchor.constraint(equalTo: pageContainer.trailingAnchor),
+            page.topAnchor.constraint(equalTo: pageContainer.topAnchor),
+            page.bottomAnchor.constraint(equalTo: pageContainer.bottomAnchor)
+        ])
+    }
+
+    private func rebuildTabBar() {
+        for view in tabButtons.arrangedSubviews {
+            tabButtons.removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
+        for (index, tab) in tabs.enumerated() {
+            let row = NSStackView()
+            row.orientation = .horizontal
+            row.spacing = 0
+            let pageTitle = tab.webView.title?.trimmingCharacters(in: .whitespacesAndNewlines)
+            let title = tab.isShowingStartPage ? "Home" : ((pageTitle?.isEmpty == false ? pageTitle : nil) ?? tab.webView.url?.host ?? "New Tab")
+            let button = NSButton(title: title, target: self, action: #selector(selectTab(_:)))
+            button.tag = index
+            button.setButtonType(.toggle)
+            button.state = index == selectedTabIndex ? .on : .off
+            button.lineBreakMode = .byTruncatingTail
+            button.toolTip = title
+            button.widthAnchor.constraint(equalToConstant: 150).isActive = true
+            let close = NSButton(title: "×", target: self, action: #selector(closeTab(_:)))
+            close.tag = index
+            close.setAccessibilityLabel("Close tab: \(title)")
+            row.addArrangedSubview(button)
+            row.addArrangedSubview(close)
+            tabButtons.addArrangedSubview(row)
+        }
+    }
+
+    @MainActor @objc func newTab() {
+        if isMiniMode { exitMiniMode() }
+        let page = Self.makeWebView()
+        page.navigationDelegate = self
+        page.uiDelegate = self
+        webView.isHidden = true
+        tabs.append(BrowserTab(webView: page))
+        selectedTabIndex = tabs.count - 1
+        installPage(page)
+        hideStatus()
+        loadStartPage()
+        updateNavigationState()
+        focusAddress()
+    }
+
+    @objc private func selectTab(_ sender: NSButton) {
+        activateTab(at: sender.tag)
+    }
+
+    private func activateTab(at index: Int) {
+        guard tabs.indices.contains(index) else { return }
+        webView.isHidden = true
+        selectedTabIndex = index
+        webView.isHidden = false
+        hideStatus()
+        updateNavigationState()
+        rebuildTabBar()
+        window?.makeFirstResponder(webView)
+    }
+
+    @MainActor func closeCurrentTab() {
+        closeTab(at: selectedTabIndex)
+    }
+
+    @objc private func closeTab(_ sender: NSButton) {
+        closeTab(at: sender.tag)
+    }
+
+    private func closeTab(at index: Int) {
+        guard tabs.indices.contains(index) else { return }
+        if tabs.count == 1 {
+            newTab()
+        }
+        let removed = tabs.remove(at: index)
+        removed.contentBlockingGeneration += 1
+        removed.webView.stopLoading()
+        removed.webView.navigationDelegate = nil
+        removed.webView.uiDelegate = nil
+        removed.webView.removeFromSuperview()
+        let nextIndex = index < selectedTabIndex ? selectedTabIndex - 1 : min(selectedTabIndex, tabs.count - 1)
+        selectedTabIndex = nextIndex
+        activateTab(at: nextIndex)
     }
 
     private func makeChromeContainer(containing content: NSView) -> NSView {
@@ -632,6 +803,7 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
         let floatingItem = menuItem(title: "Always on Top", action: #selector(toggleAlwaysOnTopFromMenu))
         floatingItem.state = alwaysOnTopButton.state
         menu.addItem(floatingItem)
+        menu.addItem(makeTransparencyMenuItem())
         menu.addItem(.separator())
         menu.addItem(menuItem(title: "Clear Website Data...", action: #selector(clearWebsiteData)))
 
@@ -642,6 +814,38 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
         let item = NSMenuItem(title: title, action: action, keyEquivalent: "")
         item.target = self
         return item
+    }
+
+    private func makeTransparencyMenuItem() -> NSMenuItem {
+        let container = NSView(frame: NSRect(x: 0, y: 0, width: 260, height: 62))
+        transparencyLabel.frame = NSRect(x: 16, y: 36, width: 228, height: 18)
+        let transparency = Double(1 - (window?.alphaValue ?? 1))
+        let slider = NSSlider(
+            value: transparency,
+            minValue: 0,
+            maxValue: 0.75,
+            target: self,
+            action: #selector(changeTransparency(_:))
+        )
+        slider.frame = NSRect(x: 16, y: 8, width: 228, height: 24)
+        slider.isContinuous = true
+        slider.setAccessibilityLabel("Window transparency")
+        container.addSubview(transparencyLabel)
+        container.addSubview(slider)
+        let item = NSMenuItem(title: "Transparency", action: nil, keyEquivalent: "")
+        item.view = container
+        return item
+    }
+
+    @objc private func changeTransparency(_ sender: NSSlider) {
+        applyTransparency(sender.doubleValue)
+        UserDefaults.standard.set(sender.doubleValue, forKey: DefaultsKey.transparency)
+    }
+
+    private func applyTransparency(_ value: Double) {
+        let transparency = value.isFinite ? min(0.75, max(0, value)) : 0
+        window?.alphaValue = CGFloat(1 - transparency)
+        transparencyLabel.stringValue = "Transparency: \(Int((transparency * 100).rounded()))%"
     }
 
     private func restoreAlwaysOnTop() {
@@ -668,7 +872,7 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
         applyContentBlocking(enabled, reloadPage: false, completion: completion)
     }
 
-    private func configureContentBlocking(for url: URL?, reloadPage: Bool) {
+    private func configureContentBlocking(for url: URL?, reloadPage: Bool, tab: BrowserTab? = nil) {
         let userEnabled = UserDefaults.standard.bool(forKey: DefaultsKey.blockAds)
         let shouldPauseForStreaming = url.map(BrowserPolicy.shouldPauseContentBlocking) ?? false
         let shouldEnable = userEnabled && !shouldPauseForStreaming
@@ -676,6 +880,7 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
         applyContentBlocking(
             shouldEnable,
             reloadPage: reloadPage,
+            tab: tab,
             statusMessage: shouldPauseForStreaming && userEnabled ? "Ad blocking paused for streaming compatibility" : nil
         )
     }
@@ -683,27 +888,30 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
     private func applyContentBlocking(
         _ enabled: Bool,
         reloadPage: Bool = true,
+        tab: BrowserTab? = nil,
         statusMessage: String? = nil,
         completion: (() -> Void)? = nil
     ) {
-        if contentBlockingActive == enabled {
+        let tab = tab ?? selectedTab
+        let page = tab.webView
+        if tab.contentBlockingActive == enabled {
             if let statusMessage {
-                showStatus(statusMessage)
+                showTabStatus(statusMessage, for: tab)
             }
             completion?()
             return
         }
 
-        contentBlockingGeneration += 1
-        let generation = contentBlockingGeneration
-        let userContentController = webView.configuration.userContentController
+        tab.contentBlockingGeneration += 1
+        let generation = tab.contentBlockingGeneration
+        let userContentController = page.configuration.userContentController
         userContentController.removeAllContentRuleLists()
-        contentBlockingActive = false
+        tab.contentBlockingActive = false
 
         guard enabled else {
-            showStatus(statusMessage ?? "Ad blocking off")
+            showTabStatus(statusMessage ?? "Ad blocking off", for: tab)
             if reloadPage {
-                webView.reload()
+                page.reload()
             }
             completion?()
             return
@@ -711,10 +919,10 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
 
         if let compiledContentRuleList {
             userContentController.add(compiledContentRuleList)
-            contentBlockingActive = true
-            showStatus("Ad blocking on")
+            tab.contentBlockingActive = true
+            showTabStatus("Ad blocking on", for: tab)
             if reloadPage {
-                webView.reload()
+                page.reload()
             }
             completion?()
             return
@@ -726,7 +934,7 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
         ) { [weak self] ruleList, error in
             DispatchQueue.main.async {
                 guard let self else { return }
-                guard self.contentBlockingGeneration == generation else {
+                guard tab.contentBlockingGeneration == generation else {
                     completion?()
                     return
                 }
@@ -734,28 +942,34 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
                 if let ruleList {
                     self.compiledContentRuleList = ruleList
                     userContentController.add(ruleList)
-                    self.contentBlockingActive = true
-                    self.showStatus("Ad blocking on")
+                    tab.contentBlockingActive = true
+                    self.showTabStatus("Ad blocking on", for: tab)
                     if reloadPage {
-                        self.webView.reload()
+                        page.reload()
                     }
                     completion?()
                     return
                 }
 
-                self.contentBlockingActive = false
+                tab.contentBlockingActive = false
                 if let error {
-                    self.showStatus(
+                    self.showTabStatus(
                         "Ad blocker failed: \(error.localizedDescription)",
+                        for: tab,
                         duration: 6,
                         isError: true
                     )
                 } else {
-                    self.showStatus("Ad blocker unavailable", duration: 6, isError: true)
+                    self.showTabStatus("Ad blocker unavailable", for: tab, duration: 6, isError: true)
                 }
                 completion?()
             }
         }
+    }
+
+    private func showTabStatus(_ message: String, for tab: BrowserTab, duration: TimeInterval? = 3, isError: Bool = false) {
+        guard selectedTab === tab else { return }
+        showStatus(message, duration: duration, isError: isError)
     }
 
     private func loadInitialPage() {
@@ -786,6 +1000,7 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
 
     private func loadStartPage() {
         isShowingStartPage = true
+        rebuildTabBar()
         addressField.stringValue = ""
         hideStatus()
         configureContentBlocking(for: nil, reloadPage: false)
@@ -796,6 +1011,7 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
     }
 
     private func updateNavigationState() {
+        rebuildTabBar()
         backButton.isEnabled = webView.canGoBack
         forwardButton.isEnabled = webView.canGoForward
 
@@ -921,6 +1137,7 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
             control.isHidden = enabled
         }
 
+        tabBar.isHidden = enabled
         chromeContainer?.isHidden = enabled
         toolbarStack.isHidden = enabled
         miniOverlayButton.isHidden = !enabled
@@ -1121,7 +1338,9 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
 
     @objc private func toggleContentBlocking() {
         UserDefaults.standard.set(blockAdsButton.state == .on, forKey: DefaultsKey.blockAds)
-        configureContentBlocking(for: webView.url, reloadPage: true)
+        for tab in tabs {
+            configureContentBlocking(for: tab.webView.url, reloadPage: true, tab: tab)
+        }
     }
 
     @objc private func toggleContentBlockingFromMenu() {
@@ -1212,12 +1431,27 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
     }
 
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        navigationGeneration += 1
+        guard let tab = tabs.first(where: { $0.webView === webView }) else { return }
+        tab.navigationGeneration += 1
+        guard webView === self.webView else { return }
         showStatus("Loading...", duration: nil)
         updateNavigationState()
     }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping @MainActor @Sendable (WKNavigationActionPolicy) -> Void) {
+        guard let tab = tabs.first(where: { $0.webView === webView }) else {
+            decisionHandler(.cancel)
+            return
+        }
+        if navigationAction.navigationType == .linkActivated,
+           NSEvent.modifierFlags.contains(.command),
+           let url = navigationAction.request.url,
+           BrowserPolicy.isAllowedWebURL(url) {
+            decisionHandler(.cancel)
+            newTab()
+            self.webView.load(navigationAction.request)
+            return
+        }
         guard navigationAction.targetFrame?.isMainFrame == true,
               let url = navigationAction.request.url else {
             decisionHandler(.allow)
@@ -1225,18 +1459,18 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
         }
 
         if BrowserPolicy.isInternalURL(url) || url.scheme?.lowercased() == "about" {
-            isShowingStartPage = true
+            tab.isShowingStartPage = true
             decisionHandler(.allow)
             return
         }
 
         if BrowserPolicy.isAllowedWebURL(url) {
-            isShowingStartPage = false
+            tab.isShowingStartPage = false
             if navigationAction.shouldPerformDownload {
                 decisionHandler(.download)
                 return
             }
-            configureContentBlocking(for: url, reloadPage: false)
+            configureContentBlocking(for: url, reloadPage: false, tab: tab)
             decisionHandler(.allow)
             return
         }
@@ -1260,12 +1494,15 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        rebuildTabBar()
+        guard webView === self.webView else { return }
         hideStatus()
         updateNavigationState()
         watchForEmbeddedPlaybackError(generation: navigationGeneration)
     }
 
     private func watchForEmbeddedPlaybackError(generation: Int) {
+        let tab = selectedTab
         guard let url = webView.url,
               let serviceName = BrowserPolicy.embeddedPlaybackServiceName(for: url),
               !warnedPlaybackServices.contains(serviceName) else {
@@ -1275,7 +1512,8 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
         for delay in [1.5, 4.0, 8.0] {
             DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
                 guard let self,
-                      self.navigationGeneration == generation,
+                      self.selectedTab === tab,
+                      tab.navigationGeneration == generation,
                       !self.warnedPlaybackServices.contains(serviceName) else {
                     return
                 }
@@ -1294,7 +1532,8 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
                     """
                 ) { [weak self] result, _ in
                     guard let self,
-                          self.navigationGeneration == generation,
+                          self.selectedTab === tab,
+                          tab.navigationGeneration == generation,
                           result is String else {
                         return
                     }
@@ -1324,11 +1563,13 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
     }
 
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        guard webView === self.webView else { return }
         showStatus(error.localizedDescription, duration: 6, isError: true)
         updateNavigationState()
     }
 
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        guard webView === self.webView else { return }
         showStatus(error.localizedDescription, duration: 6, isError: true)
         updateNavigationState()
     }
@@ -1337,8 +1578,9 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
         if navigationAction.targetFrame == nil,
            let url = navigationAction.request.url,
            BrowserPolicy.isAllowedWebURL(url) {
-            webView.load(navigationAction.request)
-            showStatus("Opened link in this window")
+            newTab()
+            self.webView.load(navigationAction.request)
+            showStatus("Opened link in a new tab")
         } else if navigationAction.targetFrame == nil {
             showStatus("Blocked unsupported popup", duration: 6, isError: true)
         }
@@ -1346,6 +1588,7 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
     }
 
     func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
+        guard webView === self.webView else { return }
         let now = Date()
         recentWebContentRestarts.removeAll { now.timeIntervalSince($0) > 60 }
 
@@ -1559,7 +1802,8 @@ final class BrowserWindowController: NSWindowController, WKNavigationDelegate, W
                 "tv.apple.com": "#d1d1d6",
                 "peacocktv.com": "#ffd60a",
                 "paramountplus.com": "#0a84ff",
-                "tubitv.com": "#bf5af2"
+                "tubitv.com": "#bf5af2",
+                "pluto.tv": "#ffd60a"
             ]
             if let match = knownAccent.first(where: { host == $0.key || host.hasSuffix(".\($0.key)") }) {
                 return match.value

@@ -2,9 +2,17 @@
 
 A small macOS browser window for keeping websites and web video visible above other apps without relying on Safari Picture-in-Picture.
 
+## Fork attribution
+
+This fork is based on [Floating Browser by Chris Hansen](https://github.com/chrishansen1984x-lang/floating-browser). The original copyright notice and [MIT license](LICENSE) are retained.
+
+This fork adds browser tabs, adjustable window transparency, and a Pluto TV Home shortcut. It is maintained independently of the original project.
+
 ![Floating Browser Home screen](Screenshots/FloatingBrowser-Home.png)
 
 ## Install
+
+This fork currently provides source only. Build it using **Build From Source** below. The prebuilt download instructions that follow describe the original project's releases.
 
 Download the `.dmg` from the repository's **Releases** page. Open it, then drag **Floating Browser** into **Applications**.
 
@@ -25,8 +33,11 @@ Do not disable Gatekeeper or run Terminal bypass commands. Read [UNSIGNED_BETA_I
 
 ## Use
 
+- Select **+** in the tab bar or press `Command-T` to open a new tab. Select a tab to switch pages, or use its **×** button or `Command-W` to close it. Closing the last tab opens a fresh Home tab. Tabs remain open for the current session; the tab list is not restored after quitting.
+- Links that request a new window open in a new tab. `Command`-click a web link to open it in a new tab.
+- Choose **More > Transparency** to adjust window transparency from 0% to 75%. The setting is saved and also applies in Mini Player.
 - Select the house button to return to the site launcher.
-- The launcher includes Netflix, YouTube, Hulu, Disney+, Max, Prime Video on Amazon, Apple TV+, Peacock, Paramount+, and Tubi.
+- The launcher includes Netflix, YouTube, Hulu, Disney+, Max, Prime Video on Amazon, Apple TV+, Peacock, Paramount+, Tubi, and Pluto TV.
 - Open any page, then choose **More > Add Current Site** to save it to the launcher.
 - Open **More** to edit, reorder, or remove saved sites; open the page in Safari; open Passwords; change ad blocking; or toggle always-on-top behavior.
 - Select the Mini Player button after video starts to create a compact borderless window. Its corner controls close Mini or return to the full browser.
