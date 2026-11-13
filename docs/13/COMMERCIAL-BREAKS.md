@@ -2,7 +2,7 @@
 
 ## Scope and experience
 
-Implements [issue 13](https://github.com/doctor-ew/floating-browser/issues/13). Add an optional shared pool of vintage commercial clips between complete stories. The existing breaks preference remains off by default; importing the starter pack preserves the viewer’s saved preference. Enable **Vintage commercial breaks + my bumpers** in Stream settings. The existing Next button skips a commercial. Toggling the option preserves current playback and affects upcoming breaks.
+Implements [issue 13](https://github.com/doctor-ew/floating-browser/issues/13). Add an optional shared pool of vintage commercial clips between complete stories. Commercial breaks default to on for new catalogs following issue 14; importing the starter pack preserves the viewer’s saved On/Off preference. Enable **Vintage commercial breaks + my bumpers** in Stream settings. The existing Next button skips a commercial. Toggling the option preserves current playback and affects upcoming breaks.
 
 The shared pool applies to action, cartoons, mixed and show-only streams, including manual episode queues. Insert one break after a complete story group. Grouped multipart stories stay together. Manual show queues finish on the last program with no trailing commercial; looping stations can end their cycle with a break. Existing checked user bumpers remain in the selected show/channel pool.
 
@@ -35,7 +35,7 @@ Manual queue positions retain the originating show while a global commercial is 
 
 ## Validation
 
-All 54 tests and syntax checks pass. Tests cover global and show-only scopes, off-by-default migration, preserved preferences, story grouping, manual ownership/navigation, skip behavior, removal/disable recovery, unchecked-source exclusion, and static packaging. All 14 MP4 endpoints returned HTTP 206, video/mp4 and an MP4 signature for a 32-byte range.
+All 54 tests and syntax checks pass. Tests cover global and show-only scopes, saved-preference preservation, story grouping, manual ownership/navigation, skip behavior, removal/disable recovery, unchecked-source exclusion, and static packaging. All 14 MP4 endpoints returned HTTP 206, video/mp4 and an MP4 signature for a 32-byte range.
 
 The interactive browser preview host was unavailable, so a visual/end-to-end browser playback check remains pending. No provider video files are mirrored in the static release.
 
