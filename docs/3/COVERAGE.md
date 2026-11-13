@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-0a3712cd69673706. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-e68c9a1296454c69. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-1926 catalog episodes/items; 1832 eligible for the station by existing metadata rules. A schedulable source is not a guarantee of future playback.
+2194 catalog episodes/items; 2100 eligible for the station by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Metadata-ready | Source links |
 | --- | ---: | ---: | ---: |
@@ -41,6 +41,14 @@ Revision: expanded-0a3712cd69673706. Sources: public Archive metadata and offici
 | Inspector Gadget | 86 | 86 | 86 |
 | Spider-Man and His Amazing Friends | 24 | 24 | 24 |
 | The Incredible Hulk (1982 animated) | 13 | 13 | 13 |
+| Bionic Six | 65 | 65 | 65 |
+| Jayce and the Wheeled Warriors | 65 | 65 | 65 |
+| Pole Position | 13 | 13 | 13 |
+| Turbo Teen | 12 | 12 | 12 |
+| BraveStarr | 19 | 19 | 19 |
+| Defenders of the Earth | 65 | 65 | 65 |
+| Drak Pack | 16 | 16 | 16 |
+| Dragon’s Lair | 13 | 13 | 13 |
 | Saturday Morning Simulator | 1 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
