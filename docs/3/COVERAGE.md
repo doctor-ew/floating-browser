@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-6ab50845114c14de. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-41450704ab0b0bbb. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-2755 catalog episodes/items; 2661 eligible for the station by existing metadata rules. A schedulable source is not a guarantee of future playback.
+2802 catalog episodes/items; 2707 eligible for the station by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Metadata-ready | Source links |
 | --- | ---: | ---: | ---: |
@@ -32,6 +32,11 @@ Revision: expanded-6ab50845114c14de. Sources: public Archive metadata and offici
 | Misfits of Science (1985) | 16 | 16 | 16 |
 | Otherworld (1985) | 8 | 8 | 8 |
 | Whiz Kids | 18 | 18 | 18 |
+| Blue Thunder (1984) | 11 | 11 | 11 |
+| The Master (1984) | 13 | 13 | 13 |
+| Tales of the Gold Monkey | 21 | 21 | 21 |
+| Stingray (1985) | 1 | 0 | 1 |
+| Matt Houston | 1 | 1 | 1 |
 | He-Man and the Masters of the Universe | 130 | 130 | 418 |
 | G.I. Joe: A Real American Hero | 104 | 95 | 116 |
 | The Transformers | 100 | 16 | 111 |
