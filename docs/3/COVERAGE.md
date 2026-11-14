@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-852c3df432aca13e. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-bc4103d62386993c. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-3055 catalog episodes/items; 2936 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+3212 catalog episodes/items; 3093 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -92,6 +92,7 @@ Revision: expanded-852c3df432aca13e. Sources: public Archive metadata and offici
 | Barney Miller | 1 | 1 | 0 | 1 |
 | Mork & Mindy | 24 | 24 | 0 | 24 |
 | The Love Boat | 4 | 4 | 0 | 4 |
+| Benson | 157 | 157 | 0 | 157 |
 | Barnaby Jones | 0 | 0 | 0 | 0 |
 | Baretta | 58 | 58 | 0 | 58 |
 | B.J. and the Bear | 12 | 12 | 0 | 12 |
