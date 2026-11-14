@@ -6,7 +6,7 @@ Expose the existing YATA station schedules as a six-channel, local-time program 
 
 ## Behavior
 
-- Stream and TV configuration is in a collapsed native details drawer; its summary displays rotation and commercial state.
+- The large channel cards are replaced by a compact, tactile 70s/80s-style remote beneath the TV. Its SET UP button opens stream and TV configuration in a native modal overlay; a compact status displays rotation and commercial state. Escape, Close and Done dismiss the overlay without replacing playback. Legacy browser backup export remains in a collapsed footer detail, outside the main layout.
 - On desktop, Guide mode places the same player in a sticky left column beside the schedule using CSS layout without reparenting it. Fill window expands and restores it; narrow screens stack player and guide. Direct guide links land at the guide on desktop and at the player on narrow screens.
 - Guide and Library are tab panels. Header links and direct `#guide` navigation open the corresponding panel. Browsing does not replace or dispose the existing player.
 - The grid shows two hours at proportional widths, anchored to a half-hour boundary. Earlier and Later navigate two-hour windows, up to one day in either direction; Now returns to the current window.
