@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-bc4103d62386993c. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-c9a64be038035323. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-3212 catalog episodes/items; 3093 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+3239 catalog episodes/items; 3120 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -96,6 +96,8 @@ Revision: expanded-bc4103d62386993c. Sources: public Archive metadata and offici
 | Barnaby Jones | 0 | 0 | 0 | 0 |
 | Baretta | 58 | 58 | 0 | 58 |
 | B.J. and the Bear | 12 | 12 | 0 | 12 |
+| Mister T | 9 | 9 | 0 | 9 |
+| Frankenstein Jr. and The Impossibles | 18 | 18 | 0 | 18 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
