@@ -19,6 +19,10 @@ Expose the existing YATA station schedules as a six-channel, local-time program 
 
 `src/tv-guide.mjs` compiles channel schedules and projects bounded windows. Compilations are cached by catalog identity in `src/tv-guide-ui.mjs`; ordinary clock updates reuse the rows and DOM. At most 512 underlying schedule entries are traversed per row/window; truncation is explicit for pathological short-item catalogs. Guide data is derived in memory and introduces no catalog writes, database, credentials, or public editing API.
 
+## Appearance
+
+Walnut surfaces and warm ivory program listings establish the page palette. Burnt-orange actions and muted olive controls complement the retro cabinet. Amber is reserved for remote numerals and hardware selection indicators. Color changes do not alter scheduling, data storage, user preferences or player behavior.
+
 ## Accessibility
 
 Native buttons expose full program labels and selected state. Guide and Library tabs support arrow keys, Home and End. The mobile grid scrolls inside its labeled region, with sticky channel labels. Program details and actions reflow; the page itself does not overflow horizontally.
