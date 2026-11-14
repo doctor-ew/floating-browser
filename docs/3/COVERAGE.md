@@ -1,6 +1,6 @@
 # Expanded library coverage
 
-Revision: expanded-ceda4341a064cc9e. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-c19d8afbf2e4e769. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
 2956 catalog episodes/items; 2837 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
