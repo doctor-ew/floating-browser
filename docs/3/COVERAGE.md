@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-c19d8afbf2e4e769. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-6982824d5b94b9e6. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-2956 catalog episodes/items; 2837 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+2985 catalog episodes/items; 2866 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -89,6 +89,9 @@ Revision: expanded-c19d8afbf2e4e769. Sources: public Archive metadata and offici
 | Inch High, Private Eye | 13 | 13 | 0 | 13 |
 | Midnight Matinee | 10 | 5 | 0 | 5 |
 | Vintage commercial breaks | 14 | 0 | 14 | 14 |
+| Barney Miller | 1 | 1 | 0 | 1 |
+| Mork & Mindy | 24 | 24 | 0 | 24 |
+| The Love Boat | 4 | 4 | 0 | 4 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
