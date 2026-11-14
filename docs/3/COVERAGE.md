@@ -1,6 +1,6 @@
 # Expanded library coverage
 
-Revision: expanded-2863364dc93cf7c3. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-998920f7350401b8. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
 2816 catalog episodes/items; 2707 program entries eligible for the station and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
