@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-998920f7350401b8. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-ceda4341a064cc9e. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-2816 catalog episodes/items; 2707 program entries eligible for the station and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+2956 catalog episodes/items; 2837 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -37,6 +37,12 @@ Revision: expanded-998920f7350401b8. Sources: public Archive metadata and offici
 | Tales of the Gold Monkey | 21 | 21 | 0 | 21 |
 | Stingray (1985) | 1 | 0 | 0 | 1 |
 | Matt Houston | 1 | 1 | 0 | 1 |
+| Space: 1999 | 48 | 48 | 0 | 48 |
+| UFO | 26 | 26 | 0 | 26 |
+| The Fantastic Journey | 10 | 10 | 0 | 10 |
+| Logan’s Run (TV series) | 14 | 14 | 0 | 14 |
+| Space Academy | 4 | 4 | 0 | 4 |
+| Jason of Star Command | 28 | 28 | 0 | 28 |
 | He-Man and the Masters of the Universe | 130 | 130 | 0 | 418 |
 | G.I. Joe: A Real American Hero | 104 | 95 | 0 | 116 |
 | The Transformers | 100 | 16 | 0 | 111 |
@@ -81,6 +87,7 @@ Revision: expanded-998920f7350401b8. Sources: public Archive metadata and offici
 | Wheelie and the Chopper Bunch | 13 | 13 | 0 | 13 |
 | The Funky Phantom | 17 | 17 | 0 | 17 |
 | Inch High, Private Eye | 13 | 13 | 0 | 13 |
+| Midnight Matinee | 10 | 5 | 0 | 5 |
 | Vintage commercial breaks | 14 | 0 | 14 | 14 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
