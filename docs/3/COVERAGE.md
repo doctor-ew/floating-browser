@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-c9a64be038035323. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-733a683fb726f291. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-3239 catalog episodes/items; 3120 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+3670 catalog episodes/items; 3551 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -98,6 +98,17 @@ Revision: expanded-c9a64be038035323. Sources: public Archive metadata and offici
 | B.J. and the Bear | 12 | 12 | 0 | 12 |
 | Mister T | 9 | 9 | 0 | 9 |
 | Frankenstein Jr. and The Impossibles | 18 | 18 | 0 | 18 |
+| Jem and the Holograms | 65 | 65 | 0 | 65 |
+| She-Ra: Princess of Power (1985) | 93 | 93 | 0 | 93 |
+| Rainbow Brite (1984) | 13 | 13 | 0 | 13 |
+| Care Bears (1980s) | 71 | 71 | 0 | 71 |
+| Strawberry Shortcake (1980s) | 11 | 11 | 0 | 11 |
+| My Little Pony ’n Friends (1986) | 65 | 65 | 0 | 65 |
+| Grimm’s Fairy Tale Classics | 1 | 1 | 0 | 1 |
+| The Great Grape Ape Show | 0 | 0 | 0 | 0 |
+| Shirt Tales (1982) | 13 | 13 | 0 | 13 |
+| Heathcliff and the Catillac Cats (1984) | 86 | 86 | 0 | 86 |
+| Garfield and Friends (1988) | 13 | 13 | 0 | 13 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
