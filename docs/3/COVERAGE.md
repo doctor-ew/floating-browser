@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-733a683fb726f291. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-1e4748802620e2a9. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-3670 catalog episodes/items; 3551 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+4030 catalog episodes/items; 3909 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -109,6 +109,14 @@ Revision: expanded-733a683fb726f291. Sources: public Archive metadata and offici
 | Shirt Tales (1982) | 13 | 13 | 0 | 13 |
 | Heathcliff and the Catillac Cats (1984) | 86 | 86 | 0 | 86 |
 | Garfield and Friends (1988) | 13 | 13 | 0 | 13 |
+| Cartoon Planet (1995) | 22 | 22 | 0 | 22 |
+| Space Ghost Coast to Coast | 14 | 14 | 0 | 14 |
+| Aqua Teen Hunger Force (2000) | 76 | 76 | 0 | 76 |
+| Squidbillies | 1 | 0 | 0 | 1 |
+| Robot Chicken | 1 | 0 | 0 | 1 |
+| Beavis and Butt-Head (1990s) | 197 | 197 | 0 | 197 |
+| The Maxx (1995) | 13 | 13 | 0 | 13 |
+| The Tick (1994 animated) | 36 | 36 | 0 | 36 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
