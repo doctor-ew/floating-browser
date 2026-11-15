@@ -5,3 +5,6 @@ Build/
 Dist/
 *.xcuserstate
 xcuserdata/
+
+# Local arcade runtimes and privately supplied game assets.
+nostalgia-tv/arcade/.local-assets/
