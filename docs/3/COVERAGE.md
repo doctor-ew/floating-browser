@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-34a349ee5eaedc5c. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-5410d70e4c9ed97a. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-5509 catalog episodes/items; 5377 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+6046 catalog episodes/items; 5914 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -141,6 +141,12 @@ Revision: expanded-34a349ee5eaedc5c. Sources: public Archive metadata and offici
 | Quantum Leap (1989) | 96 | 96 | 0 | 96 |
 | The Flash (1990) | 22 | 22 | 0 | 22 |
 | The Greatest American Heroine · pilot | 1 | 1 | 0 | 1 |
+| Star Trek: The Original Series | 79 | 79 | 0 | 79 |
+| Star Trek: The Next Generation | 175 | 175 | 0 | 175 |
+| Star Trek: Deep Space Nine | 2 | 2 | 0 | 2 |
+| Star Trek: Voyager | 168 | 168 | 0 | 168 |
+| Star Trek: Enterprise | 97 | 97 | 0 | 97 |
+| Star Trek: The Animated Series (1973) | 16 | 16 | 0 | 16 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
