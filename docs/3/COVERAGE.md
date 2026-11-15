@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-cdb97b0a6e056e11. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-b4b3a702dfbc3030. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-4698 catalog episodes/items; 4567 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+5390 catalog episodes/items; 5258 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -131,6 +131,13 @@ Revision: expanded-cdb97b0a6e056e11. Sources: public Archive metadata and offici
 | Josie and the Pussycats (1970) | 16 | 16 | 0 | 16 |
 | Adult Swim · vintage bumps | 2 | 0 | 2 | 2 |
 | Nickelodeon · vintage bumps | 8 | 0 | 8 | 8 |
+| Fat Albert and the Cosby Kids | 122 | 122 | 0 | 122 |
+| Good Times | 133 | 133 | 0 | 133 |
+| The Jeffersons | 244 | 244 | 0 | 244 |
+| Sanford and Son | 37 | 37 | 0 | 37 |
+| Gimme a Break! | 135 | 135 | 0 | 135 |
+| Welcome Back, Kotter | 20 | 20 | 0 | 20 |
+| Who’s the Boss? | 1 | 0 | 0 | 1 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
