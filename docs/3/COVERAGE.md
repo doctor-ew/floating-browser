@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-a0542334f7c7e14b. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-129eae546d69471f. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-6154 catalog episodes/items; 6022 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+9214 catalog episodes/items; 9082 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -123,7 +123,7 @@ Revision: expanded-a0542334f7c7e14b. Sources: public Archive metadata and offici
 | Sealab 2021 | 52 | 52 | 0 | 52 |
 | Home Movies | 52 | 52 | 0 | 52 |
 | The Brak Show | 28 | 28 | 0 | 28 |
-| Daria | 0 | 0 | 0 | 0 |
+| Daria | 65 | 65 | 0 | 65 |
 | Taxi (1978) | 114 | 114 | 0 | 114 |
 | WKRP in Cincinnati | 12 | 12 | 0 | 12 |
 | The Rockford Files | 120 | 120 | 0 | 120 |
@@ -154,6 +154,75 @@ Revision: expanded-a0542334f7c7e14b. Sources: public Archive metadata and offici
 | The New Adventures of Flash Gordon (1979) | 24 | 24 | 0 | 24 |
 | Return to the Planet of the Apes (1975) | 13 | 13 | 0 | 13 |
 | Valley of the Dinosaurs (1974) | 15 | 15 | 0 | 15 |
+| Doctor Who (1963–1989) | 70 | 70 | 0 | 70 |
+| The Highwayman (1987–1988) | 10 | 10 | 0 | 10 |
+| Max Headroom (1987) | 14 | 14 | 0 | 14 |
+| Blake’s 7 (1978) | 52 | 52 | 0 | 52 |
+| The Real Ghostbusters (1986) | 135 | 135 | 0 | 135 |
+| Robotech (1985) | 85 | 85 | 0 | 85 |
+| Star Blazers (1979) | 52 | 52 | 0 | 52 |
+| Sliders (1995) | 20 | 20 | 0 | 20 |
+| seaQuest DSV (1993) | 7 | 7 | 0 | 7 |
+| Babylon 5 (1993) | 108 | 108 | 0 | 108 |
+| Farscape (1999) | 66 | 66 | 0 | 66 |
+| Eerie, Indiana (1991) | 19 | 19 | 0 | 19 |
+| The Six Million Dollar Man | 34 | 34 | 0 | 34 |
+| Sledge Hammer | 41 | 41 | 0 | 41 |
+| Land of the Lost | 43 | 43 | 0 | 43 |
+| The Prisoner | 17 | 17 | 0 | 17 |
+| The Adventures of Brisco County Jr | 27 | 27 | 0 | 27 |
+| Mr Merlin | 22 | 22 | 0 | 22 |
+| The Mysterious Cities of Gold | 39 | 39 | 0 | 39 |
+| Sapphire and Steel | 34 | 34 | 0 | 34 |
+| The Tomorrow People | 68 | 68 | 0 | 68 |
+| The Tripods | 24 | 24 | 0 | 24 |
+| Red Dwarf | 52 | 52 | 0 | 52 |
+| The Starlost | 16 | 16 | 0 | 16 |
+| Alien Nation | 22 | 22 | 0 | 22 |
+| The Invaders | 43 | 43 | 0 | 43 |
+| The Time Tunnel | 30 | 30 | 0 | 30 |
+| Dino Riders | 14 | 14 | 0 | 14 |
+| Inhumanoids | 13 | 13 | 0 | 13 |
+| Challenge of the GoBots | 65 | 65 | 0 | 65 |
+| Battle of the Planets | 85 | 85 | 0 | 85 |
+| Saber Rider and the Star Sheriffs | 52 | 52 | 0 | 52 |
+| Dinosaucers | 65 | 65 | 0 | 65 |
+| The Adventures of Teddy Ruxpin | 52 | 52 | 0 | 52 |
+| Ulysses 31 | 26 | 26 | 0 | 26 |
+| Ewoks | 26 | 26 | 0 | 26 |
+| The Super Mario Bros Super Show | 17 | 17 | 0 | 17 |
+| Captain N | 33 | 33 | 0 | 33 |
+| Scarecrow and Mrs King | 88 | 88 | 0 | 88 |
+| Miami Vice | 111 | 111 | 0 | 111 |
+| The New Adventures of Beans Baxter | 17 | 17 | 0 | 17 |
+| Soap | 87 | 87 | 0 | 87 |
+| Police Squad | 6 | 6 | 0 | 6 |
+| ALF | 100 | 100 | 0 | 100 |
+| Perfect Strangers | 150 | 150 | 0 | 150 |
+| Small Wonder | 2 | 2 | 0 | 2 |
+| The Muppet Show | 2 | 2 | 0 | 2 |
+| Aeon Flux | 11 | 11 | 0 | 11 |
+| Liquid Television | 22 | 22 | 0 | 22 |
+| Dr Katz | 81 | 81 | 0 | 81 |
+| The Critic | 23 | 23 | 0 | 23 |
+| Duckman | 70 | 70 | 0 | 70 |
+| Mission Hill | 13 | 13 | 0 | 13 |
+| The Oblongs | 13 | 13 | 0 | 13 |
+| Clone High | 13 | 13 | 0 | 13 |
+| Moral Orel | 44 | 44 | 0 | 44 |
+| Danger Mouse | 90 | 90 | 0 | 90 |
+| Count Duckula | 65 | 65 | 0 | 65 |
+| Double Dare | 187 | 187 | 0 | 187 |
+| Out of Control | 17 | 17 | 0 | 17 |
+| Salute Your Shorts | 26 | 26 | 0 | 26 |
+| Hey Dude | 65 | 65 | 0 | 65 |
+| The Adventures of Pete and Pete | 22 | 22 | 0 | 22 |
+| Space Sentinels | 13 | 13 | 0 | 13 |
+| Blackstar | 13 | 13 | 0 | 13 |
+| Kolchak | 22 | 22 | 0 | 22 |
+| The Hitchhiker’s Guide to the Galaxy (1981) | 6 | 6 | 0 | 6 |
+| Man from Atlantis (1977) | 17 | 17 | 0 | 17 |
+| Remington Steele (1982) | 1 | 1 | 0 | 1 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
