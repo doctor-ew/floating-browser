@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-b4b3a702dfbc3030. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-34a349ee5eaedc5c. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-5390 catalog episodes/items; 5258 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+5509 catalog episodes/items; 5377 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -138,6 +138,9 @@ Revision: expanded-b4b3a702dfbc3030. Sources: public Archive metadata and offici
 | Gimme a Break! | 135 | 135 | 0 | 135 |
 | Welcome Back, Kotter | 20 | 20 | 0 | 20 |
 | Who’s the Boss? | 1 | 0 | 0 | 1 |
+| Quantum Leap (1989) | 96 | 96 | 0 | 96 |
+| The Flash (1990) | 22 | 22 | 0 | 22 |
+| The Greatest American Heroine · pilot | 1 | 1 | 0 | 1 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
