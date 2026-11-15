@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-129eae546d69471f. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-ff2ecb2ab35413df. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-9214 catalog episodes/items; 9082 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+10174 catalog episodes/items; 10042 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -224,5 +224,14 @@ Revision: expanded-129eae546d69471f. Sources: public Archive metadata and offici
 | Man from Atlantis (1977) | 17 | 17 | 0 | 17 |
 | Remington Steele (1982) | 1 | 1 | 0 | 1 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
+| X-Men: The Animated Series (1992) | 76 | 76 | 0 | 76 |
+| Batman: The Animated Series (1992) | 85 | 85 | 0 | 85 |
+| NYPD Blue (1993) | 260 | 260 | 0 | 260 |
+| Cagney & Lacey (1981) | 57 | 57 | 0 | 57 |
+| China Beach (1988) | 1 | 1 | 0 | 1 |
+| Northern Exposure (1990) | 110 | 110 | 0 | 110 |
+| Picket Fences (1992) | 88 | 88 | 0 | 88 |
+| St. Elsewhere (1982) | 137 | 137 | 0 | 137 |
+| Hill Street Blues (1981) | 146 | 146 | 0 | 146 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
