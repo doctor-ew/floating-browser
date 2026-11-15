@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-a6b0faa693484945. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-a0542334f7c7e14b. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-6102 catalog episodes/items; 5970 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+6154 catalog episodes/items; 6022 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -151,6 +151,9 @@ Revision: expanded-a6b0faa693484945. Sources: public Archive metadata and offici
 | The Star Wars Holiday Special (1978) | 1 | 1 | 0 | 1 |
 | Sealab 2020 (1972) | 13 | 13 | 0 | 13 |
 | The Venture Bros. | 28 | 28 | 0 | 28 |
+| The New Adventures of Flash Gordon (1979) | 24 | 24 | 0 | 24 |
+| Return to the Planet of the Apes (1975) | 13 | 13 | 0 | 13 |
+| Valley of the Dinosaurs (1974) | 15 | 15 | 0 | 15 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
