@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-1e4748802620e2a9. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-cdb97b0a6e056e11. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-4030 catalog episodes/items; 3909 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 14 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+4698 catalog episodes/items; 4567 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -117,6 +117,20 @@ Revision: expanded-1e4748802620e2a9. Sources: public Archive metadata and offici
 | Beavis and Butt-Head (1990s) | 197 | 197 | 0 | 197 |
 | The Maxx (1995) | 13 | 13 | 0 | 13 |
 | The Tick (1994 animated) | 36 | 36 | 0 | 36 |
+| You Can’t Do That on Television | 158 | 158 | 0 | 158 |
+| Turkey Television | 7 | 7 | 0 | 7 |
+| Harvey Birdman, Attorney at Law | 39 | 39 | 0 | 39 |
+| Sealab 2021 | 52 | 52 | 0 | 52 |
+| Home Movies | 52 | 52 | 0 | 52 |
+| The Brak Show | 28 | 28 | 0 | 28 |
+| Daria | 0 | 0 | 0 | 0 |
+| Taxi (1978) | 114 | 114 | 0 | 114 |
+| WKRP in Cincinnati | 12 | 12 | 0 | 12 |
+| The Rockford Files | 120 | 120 | 0 | 120 |
+| The Bionic Woman (1976) | 60 | 60 | 0 | 61 |
+| Josie and the Pussycats (1970) | 16 | 16 | 0 | 16 |
+| Adult Swim · vintage bumps | 2 | 0 | 2 | 2 |
+| Nickelodeon · vintage bumps | 8 | 0 | 8 | 8 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
