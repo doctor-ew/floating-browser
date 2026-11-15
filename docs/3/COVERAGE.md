@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-5410d70e4c9ed97a. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-a6b0faa693484945. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-6046 catalog episodes/items; 5914 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+6102 catalog episodes/items; 5970 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -147,6 +147,10 @@ Revision: expanded-5410d70e4c9ed97a. Sources: public Archive metadata and offici
 | Star Trek: Voyager | 168 | 168 | 0 | 168 |
 | Star Trek: Enterprise | 97 | 97 | 0 | 97 |
 | Star Trek: The Animated Series (1973) | 16 | 16 | 0 | 16 |
+| Star Wars: Droids (1985) | 14 | 14 | 0 | 14 |
+| The Star Wars Holiday Special (1978) | 1 | 1 | 0 | 1 |
+| Sealab 2020 (1972) | 13 | 13 | 0 | 13 |
+| The Venture Bros. | 28 | 28 | 0 | 28 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
 
 Search bounds, source collection URLs, exclusions and known gaps are recorded in each discovery JSON file. Unknown ordering remains season zero; matching titles and explicit season/episode pairs combine source alternatives.
