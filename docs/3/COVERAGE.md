@@ -1,8 +1,8 @@
 # Expanded library coverage
 
-Revision: expanded-ff2ecb2ab35413df. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
+Revision: expanded-0ae020cf7b5c72bb. Sources: public Archive metadata and official YouTube metadata. Counts include the original seed items.
 
-10174 catalog episodes/items; 10042 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
+11220 catalog episodes/items; 11083 TV entries eligible for ordinary station mixes, 5 films in the separate Midnight Matinee stream, and 24 optional break clips by existing metadata rules. A schedulable source is not a guarantee of future playback.
 
 | Show | Catalog items | Program-ready | Break-ready | Source links |
 | --- | ---: | ---: | ---: | ---: |
@@ -224,6 +224,20 @@ Revision: expanded-ff2ecb2ab35413df. Sources: public Archive metadata and offici
 | Man from Atlantis (1977) | 17 | 17 | 0 | 17 |
 | Remington Steele (1982) | 1 | 1 | 0 | 1 |
 | Saturday Morning Simulator | 1 | 0 | 0 | 1 |
+| Kojak (1973) | 122 | 121 | 0 | 122 |
+| Starsky & Hutch (1975) | 39 | 35 | 0 | 45 |
+| Emergency! (1972) | 33 | 33 | 0 | 33 |
+| The Mr. Magoo Show (1960) | 23 | 23 | 0 | 23 |
+| The Smurfs (1981) | 432 | 432 | 0 | 432 |
+| Dallas (1978) | 49 | 49 | 0 | 49 |
+| Room 222 (1969) | 70 | 70 | 0 | 70 |
+| Fractured Fairy Tales | 18 | 18 | 0 | 18 |
+| Dudley Do-Right of the Mounties | 40 | 40 | 0 | 40 |
+| Rocky and Bullwinkle and Friends (1959) | 162 | 162 | 0 | 162 |
+| Woody Woodpecker · original shorts | 6 | 6 | 0 | 6 |
+| Chilly Willy · original shorts | 50 | 50 | 0 | 50 |
+| Dastardly and Muttley in Their Flying Machines (1969) | 1 | 1 | 0 | 1 |
+| The Mighty Hercules (1963) | 1 | 1 | 0 | 1 |
 | X-Men: The Animated Series (1992) | 76 | 76 | 0 | 76 |
 | Batman: The Animated Series (1992) | 85 | 85 | 0 | 85 |
 | NYPD Blue (1993) | 260 | 260 | 0 | 260 |
